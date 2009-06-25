@@ -1,6 +1,7 @@
 require "rubygems"
 require "hpricot"
 
+require File.join(File.dirname(__FILE__), 'collection')
 require File.join(File.dirname(__FILE__), 'template')
 require File.join(File.dirname(__FILE__), 'renderer')
 

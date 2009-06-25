@@ -22,7 +22,7 @@ module Blend
       ret = data.dup
       return ret unless @references.any?
       ret.each do |k, v|
-        ret[k] = v.map { |i| replace_references(i) } unless v.is_a?(String)
+        ret[k] = v.map { |i| replace_references(i) } if v.is_a?(Array)
         next unless k.is_a?(Symbol)
         if @references.has_key?(k)
           val = ret.delete(k)

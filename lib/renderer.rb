@@ -14,9 +14,10 @@ module Blend
     def run_replacements
       
       @selector_map.each do |selector, data|
+        (@doc / selector).remove and next if data.nil?
         (@doc / selector).html = case data.class.name
-          when 'String' : data
-          when 'Array'  : loop_replacement(selector, data)
+          when 'String'  : data
+          when 'Array'   : loop_replacement(selector, data)
           else
             data.to_s
         end
