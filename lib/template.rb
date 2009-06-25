@@ -20,6 +20,7 @@ module Blend
     
     def replace_references(data)
       ret = data.dup
+      return ret unless @references.any?
       ret.each do |k, v|
         ret[k] = v.map { |i| replace_references(i) } unless v.is_a?(String)
         next unless k.is_a?(Symbol)
